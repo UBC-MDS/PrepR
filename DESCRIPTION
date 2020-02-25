@@ -6,22 +6,22 @@ Authors@R:
            "Qin",
            role = c("aut", "cre"),
            email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
     person("Chimaobi",
            "Amadi",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
+           email = "maobiamadi@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
     person("George",
            "Thio",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
+           email = "george.thio@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
     person("Matthew",
            "Connell",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
+           email = "matthew.at.connell@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: Preprocessing a dataset for machine learning can be a hassle. This package allows you to easily do a train/test/validation split, identify the data types of each column, one hot encode, and scale features.
 License: MIT + file LICENSE
 Encoding: UTF-8
