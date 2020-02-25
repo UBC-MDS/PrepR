@@ -23,6 +23,6 @@ Authors@R:
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID")),
 Description: Preprocessing a dataset for machine learning can be a hassle. This package allows you to easily do a train/test/validation split, identify the data types of each column, one hot encode, and scale features.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
