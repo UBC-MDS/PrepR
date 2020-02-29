@@ -36,6 +36,9 @@ data_type <- function(encodable_df) {
 #' @param x_train data.frame
 #' Dataframe of train set containing columns to be scaled.
 #' 
+#' @param x_valid data.frame
+#' Dataframe of validation set containing columns to be scaled.
+#' 
 #' @param x_test data.frame
 #' Dataframe of test set containing columns to be scaled.
 #' 
@@ -43,14 +46,18 @@ data_type <- function(encodable_df) {
 #' Vector of column names for numeric features
 #' 
 #' @return list of data.frame
-#' Stores the x_train and x_test separately as two dataframes in one list.
-#' The first element in the list will contain x_train and the second will contain x_test.
+#' Stores the x_train, x_valid and x_test separately as three dataframes in one list.
+#' The first element in the list will contain x_train, second will be x_valid and the third will contain x_test.
 #'
 #' @examples
 #' x_train <- tibble(colors = c('Blue', 'Red', 'Green'), counts = c(34, 35, 56), usage = c(4, 6, 9))
+#' 
+#' x_valid <- tibble(colors = c('Blue', 'Red', 'Green'), counts = c(29, 65, 13), usage = c(5, 27, 10))
+#' 
 #' x_test <- tibble(colors = c('Blue', 'Red', 'Green'), counts = c(20, 35, 18), usage = c(9, 6, 0))
+#' 
 #' colnames <- c('counts', 'usage')
 #' 
 #' scaler(x_train, x_test, colnames)
-scaler <- function(x_train, x_test, colnames) {
+scaler <- function(x_train, x_valid, x_test, colnames) {
 }
