@@ -5,10 +5,7 @@
 
 <!-- badges: start -->
 
-![](https://github.com/UBC-MDS/PrepR/workflows/build/badge.svg)
 [![codecov](https://codecov.io/gh/UBC-MDS/PrepR/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/PrepR)
-![Release](https://github.com/UBC-MDS/PrepR/workflows/Release/badge.svg)
-
 [![Documentation
 Status](https://readthedocs.org/projects/PrepR/badge/?version=latest)](https://PrepR.readthedocs.io/en/latest/?badge=latest)
 <!-- badges: end -->
@@ -96,6 +93,6 @@ The official documentation is hosted on Read the Docs:
 
 ### Credits
 
-This package was created using the the [Whole Game
+This package was created using the [Whole Game
 Chapter](https://r-pkgs.org/whole-game.html) from the [R
 Packages](https://r-pkgs.org/) handbook by Hadley Wickham
