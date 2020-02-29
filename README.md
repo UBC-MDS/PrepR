@@ -13,18 +13,15 @@
 Status](https://readthedocs.org/projects/PrepR/badge/?version=latest)](https://PrepR.readthedocs.io/en/latest/?badge=latest)
 <!-- badges: end -->
 
-This is an R package that preprocesses data as follows:
+### Package Summary
 
-  - Identifies features of different data types in a dataframe
-
-  - Splits data into train, validation, and test sets
-
-  - One-hot encodes features of categorical type
-
-  - Performs standard scaling of categorical features
-
-  - The package returns preprocessed and split train, validation, and
-    test data sets ready for analysis/modelling
+`PrepR` is a package for R to help preprocessing in machine learning
+tasks. There are certain repetitive tasks that come up often when doing
+a machine learning project and this package aims to alleviate those
+chores. Some of the issues that come up regularly are: finding the types
+of each column in a dataframe, splitting the data (whether into
+train/test sets or train/test/validation sets, one-hot encoding, and
+scaling features. This package will help with all of those tasks.
 
 ### Installation:
 
@@ -46,17 +43,18 @@ devtools::install_github("UBC-MDS/PrepR")
 
 This package has the following features:
 
-  - split data set into train, validation, and test sets
+  - `train_valid_test_split`: This function splits the data set into
+    train, validation, and test sets.
 
-  - identify data types for each column/feature
+  - `data_type`: This function identifies data types for each
+    column/feature. It returns one dataframe for each type of data.
 
-  - perform one-hot encoding on the categorical features
+  - `one-hot`: This function performs one-hot encoding on the
+    categorical features and returns a dataframe for the train, test,
+    validation sets with sensible column names.
 
-  - perform standardcscaling on the numerical features
-
-  - concat the generated columns to original dataframe
-
-  - rename columns
+  - `scaler`: This function performs standard scaling on the numerical
+    features.
 
 ### Dependencies
 
@@ -88,6 +86,18 @@ stratify, random_state, shuffle)`
 `X_train = scaler(x_train, x_test, colnames)['x_train']`
 
 `X_test = scaler(x_train, x_test, colnames)['x_test']`
+
+### Our package in the R ecosystem
+
+We were unable to find any packages that do everything that ours does,
+but there are packages for machine learning in R that we will make use
+of. The `caret` package in R does some of these preprocessing steps,
+such as train/test split. However, it does not seem that there is an
+option for having a validation set in `caret`. The `caret` package also
+does one-hot encoding with the function `dummyVars`, though we aim to
+have a function that’s more intuitive. Overall, we feel this package
+will fit in well with the R ecosystem and help make machine learning a
+little easier.
 
 ### Documentation
 
