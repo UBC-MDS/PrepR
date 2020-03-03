@@ -38,4 +38,15 @@ onehot <- function(encodable_df) {
   }
 
   names(df) <- columns
-}
+
+  for (name in names(df)) {
+    for (i in seq(1,length(fruits$species))) {
+
+      if (fruits$species[i] == name) {
+
+        temp_name <- {{name}}
+
+        df[i, temp_name] <- 1
+      }
+    }
+  }
