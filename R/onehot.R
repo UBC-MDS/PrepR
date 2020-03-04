@@ -1,3 +1,9 @@
+# Helper data
+fruits <- data.frame(species = c("apple", "grape", "pear"))
+fruits$species <- as.factor(fruits$species)
+
+
+
 #' One-Hot encode a dataframe
 #'
 #' One-hot encodes a dataframe whose features are all categorical
@@ -13,21 +19,19 @@
 #' onehot(my_data)
 onehot <- function(encodable_df) {
 
+  # For one column df:
 
-  # Helper data
-  fruits <- data.frame(species = c("apple", "grape", "pear"))
-  fruits$species <- as.factor(fruits$species)
-
+  header <- names(encodable_df)
 
   columns <- c()
-  for (level in levels(fruits$species)) {
+  for (level in levels(encodable_df[[header]])) {
     columns <- c(columns, level)
   }
 
   columns2 <- c()
 
   for (column in columns) {
-    assign(column, rep(0,3))
+    assign(column, rep(0,nrow(encodable_df)))
     columns2 <- c(columns2, as.name(column))
   }
 
@@ -40,9 +44,9 @@ onehot <- function(encodable_df) {
   names(df) <- columns
 
   for (name in names(df)) {
-    for (i in seq(1,length(fruits$species))) {
+    for (i in seq(1,nrow(encodable_df))) {
 
-      if (fruits$species[i] == name) {
+      if (encodable_df[i,1] == name) {
 
         temp_name <- {{name}}
 
@@ -50,3 +54,18 @@ onehot <- function(encodable_df) {
       }
     }
   }
+
+  df
+}
+
+
+
+test <- data.frame(as.factor(mtcars$cyl))
+names(test)
+
+levels(test[[names(test)]])
+
+onehot(test)
+
+
+test[5,1] ==8
