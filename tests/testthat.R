@@ -1,4 +1,4 @@
 library(testthat)
-library(convertempr)
+library(PrepR)
 
 test_check("prepR")
