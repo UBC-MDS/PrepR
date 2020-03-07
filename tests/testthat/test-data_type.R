@@ -1,6 +1,6 @@
 library(testthat)
 library(tidyverse)
-library(prepR)
+library(PrepR)
 
 test_that("data_type correctly separates categorical and numeric", {
   test_df <- tibble(cat1 = c("apple", "pear"), cat2 = c(TRUE, FALSE), num1 = c(1L, 2L), num2 = c(2, 3.4))
