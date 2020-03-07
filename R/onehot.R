@@ -14,14 +14,14 @@
 onehot <- function(encodable_df) {
 
   # Input type check:
-  testthat::test_that("Input should be a dataframe", {
-    is.data.frame(encodable_df)
-  })
+  if (is.data.frame(encodable_df) ==FALSE) {
+    stop("Input should be a dataframe!")
+  }
 
   # Test that the dataframe can be reasonable encoded
-  testthat::test_that("The column should have fewer than 10 unique values", {
-    length(unique(encodable_df[[1]])) < 10
-  })
+  if (length(unique(encodable_df[[1]])) > 10) {
+  stop("The column should have fewer than 10 unique values")
+  }
 
   # For one column df:
   header <- names(encodable_df)

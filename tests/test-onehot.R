@@ -12,7 +12,7 @@ test_that("Length of input and output should be equal (same number of rows)", {
 })
 
 test_that("There should not be more than 10 unique values", {
-  expect_error(onehot(mtcars$mpg))
+  expect_error(onehot(mtcars[1]))
 })
 
 test_that("Number of columns in output should be equal to number of unique values in input column",{
