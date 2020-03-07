@@ -1,9 +1,3 @@
-# Helper data
-fruits <- data.frame(species = c("apple", "grape", "pear"))
-fruits$species <- as.factor(fruits$species)
-
-
-
 #' One-Hot encode a dataframe
 #'
 #' One-hot encodes a dataframe whose features are all categorical
@@ -19,8 +13,17 @@ fruits$species <- as.factor(fruits$species)
 #' onehot(my_data)
 onehot <- function(encodable_df) {
 
-  # For one column df:
+  # Input type check:
+  testthat::test_that("Input should be a dataframe", {
+    is.data.frame(encodable_df)
+  })
 
+  # Test that the dataframe can be reasonable encoded
+  testthat::test_that("The column should have fewer than 10 unique values", {
+    length(unique(encodable_df[[1]])) < 10
+  })
+
+  # For one column df:
   header <- names(encodable_df)
 
   columns <- c()
@@ -57,15 +60,3 @@ onehot <- function(encodable_df) {
 
   df
 }
-
-
-
-test <- data.frame(as.factor(mtcars$cyl))
-names(test)
-
-levels(test[[names(test)]])
-
-onehot(test)
-
-
-test[5,1] ==8
