@@ -1,35 +1,3 @@
-#' data_type
-#' Identify features of different data types.
-#'
-#' @param df data.frame
-#' Original feature dataframe containing one column for each feature.
-#'
-#' @return list of data.frame
-#' Stores the categorical and numerical columns separately as two dataframes in one list.
-#' The first element in the list will contain categorical dataframe and the second will contain numerical dataframe.
-#'
-#' @examples
-#' my_data <- tibble(fruits = c('apple', 'banana', 'pear'), counts = c(1, 2, 3), price = c(0, 1, 2))
-#' data_type(my_data)
-data_type <- function(df) {
-}
-
-#' One-Hot encode a dataframe
-#'
-#' One-hot encodes a dataframe whose features are all categorical
-#'
-#' @param encodable_df data.frame
-#' A dataframe of categorical features.
-#'
-#' @return data.frame
-#' Returns the same dataframe with useful column names and one-hot encoded features
-#'
-#' @examples
-#' my_data <- tibble(animals = c('monkey', 'dog', 'cat'))
-#' onehot(my_data)
-data_type <- function(encodable_df) {
-}
-
 #' scaler
 #' Perform standard scaler on numerical features.
 #'
