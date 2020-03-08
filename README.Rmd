@@ -49,7 +49,7 @@ This package has the following features:
 
 - `data_type`: This function identifies data types for each column/feature. It returns one dataframe for each type of data.
 
-- `one-hot`: This function performs one-hot encoding on the categorical features and returns a dataframe for the train, test, validation sets with sensible column names.
+- `one-hot`: This function performs one-hot encoding on the categorical features and returns a dataframe with sensible column names.
 
 - `scaler`: This function performs standard scaling on the numerical features. 
 
@@ -88,11 +88,17 @@ R version 3.6.1 and R packages:
 
 ### Our package in the R ecosystem
 
-We were unable to find any packages that do everything that ours does, but there are packages for machine learning in R that we will make use of. 
+There are no packages that do everything that this one does, but there are packages for machine learning in R that this package will make use of. 
 The `caret` package in R does some of these preprocessing steps, such as train/test split. 
-However, it does not seem that there is an option for having a validation set in `caret`.
-The `caret` package also does one-hot encoding with the function `dummyVars`, though we aim to have a function that's more intuitive.
-Overall, we feel this package will fit in well with the R ecosystem and help make machine learning a little easier. 
+It does not, however, have a function that takes a dataframe and returns multiple dataframes based on their column type; 
+this is the issue that this package's `data_type` function seeks to solve.
+However, it does not seem that there is an option for having a validation set in `caret`'s version of train/test split.
+This is an option that would be useful to anyone doing machine learning.
+The `caret` package also does one-hot encoding with the function `dummyVars`, though `onehot()` in the PrepR package is more intuitive:
+its function does not return meaningful, human-readable column names.
+It also removes one column by default, which is better for fast computation, but worse for human-readability.
+
+Overall, this package fits in well with the R ecosystem and helps make machine learning a little easier. 
 
 
 ### Documentation
