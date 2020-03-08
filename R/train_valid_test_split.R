@@ -1,6 +1,6 @@
 #' train_valid_test_split
 #' Splits arrays or matrices into random train, validation and test subsets
-#' The proprotion of the train set relative to the input data will be valid_size * (1 - test_size)
+#' The proportion of the train set relative to the input data will be valid_size * (1 - test_size)
 #'
 #' @param
 #' X, y arrays
