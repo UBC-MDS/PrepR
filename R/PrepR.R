@@ -63,21 +63,6 @@ train_valid_test <- function(X, y, test_size, valid_size, train_size,
 }
 
 
-#' One-Hot encode a dataframe
-#'
-#' One-hot encodes a dataframe whose features are all categorical
-#'
-#' @param encodable_df data.frame
-#' A dataframe of categorical features.
-#'
-#' @return data.frame
-#' Returns the same dataframe with useful column names and one-hot encoded features
-#'
-#' @examples
-#' my_data <- tibble(animals = c('monkey', 'dog', 'cat'))
-#' onehot(my_data)
-onehot <- function(encodable_df) {
-}
 
 #' scaler
 #' Perform standard scaler on numerical features.
@@ -94,6 +79,19 @@ onehot <- function(encodable_df) {
 #' @param colnames vector
 #' Vector of column names for numeric features
 #'
+<<<<<<< HEAD
+=======
+#'
+#' @param x_valid data.frame
+#' Dataframe of validation set containing columns to be scaled.
+#'
+#' @param x_test data.frame
+#' Dataframe of test set containing columns to be scaled.
+#'
+#' @param colnames vector
+#' Vector of column names for numeric features
+#'
+>>>>>>> 3bfb1ffd8df49f091ce5959085039a80fe03ec27
 #' @return list of data.frame
 #' Stores the x_train, x_valid and x_test separately as three dataframes in one list.
 #' The first element in the list will contain x_train, second will be x_valid and the third will contain x_test.
