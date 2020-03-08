@@ -50,8 +50,8 @@ This package has the following features:
     column/feature. It returns one dataframe for each type of data.
 
   - `one-hot`: This function performs one-hot encoding on the
-    categorical features and returns a dataframe for the train, test,
-    validation sets with sensible column names.
+    categorical features and returns a dataframe with sensible column
+    names.
 
   - `scaler`: This function performs standard scaling on the numerical
     features.
@@ -92,10 +92,18 @@ stratify, random_state, shuffle)`
 There are no packages that do everything that this one does, but there
 are packages for machine learning in R that this package will make use
 of. The `caret` package in R does some of these preprocessing steps,
-such as train/test split. However, it does not seem that there is an
-option for having a validation set in `caret`’s version of train/test
-split. The `caret` package also does one-hot encoding with the function
-`dummyVars`, though `onehot()` in the PrepR package is more intuitive.
+such as train/test split. It does not, however, have a function that
+takes a dataframe and returns multiple dataframes based on their column
+type; this is the issue that this package’s `data_type` function seeks
+to solve. However, it does not seem that there is an option for having a
+validation set in `caret`’s version of train/test split. This is an
+option that would be useful to anyone doing machine learning. The
+`caret` package also does one-hot encoding with the function
+`dummyVars`, though `onehot()` in the PrepR package is more intuitive:
+its function does not return meaningful, human-readable column names. It
+also removes one column by default, which is better for fast
+computation, but worse for human-readability.
+
 Overall, this package fits in well with the R ecosystem and helps make
 machine learning a little easier.
 
