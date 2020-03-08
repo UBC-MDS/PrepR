@@ -89,11 +89,11 @@ R version 3.6.1 and R packages:
 
 ### Our package in the R ecosystem
 
-We were unable to find any packages that do everything that ours does, but there are packages for machine learning in R that we will make use of. 
+There are no packages that do everything that this one does, but there are packages for machine learning in R that this package will make use of. 
 The `caret` package in R does some of these preprocessing steps, such as train/test split. 
-However, it does not seem that there is an option for having a validation set in `caret`.
-The `caret` package also does one-hot encoding with the function `dummyVars`, though we aim to have a function that's more intuitive.
-Overall, we feel this package will fit in well with the R ecosystem and help make machine learning a little easier. 
+However, it does not seem that there is an option for having a validation set in `caret`'s version of train/test split.
+The `caret` package also does one-hot encoding with the function `dummyVars`, though `onehot()` in the PrepR package is more intuitive.
+Overall, this package fits in well with the R ecosystem and helps make machine learning a little easier. 
 
 
 ### Documentation
