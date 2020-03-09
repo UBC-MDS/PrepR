@@ -79,6 +79,8 @@ train_valid_test <- function(X, y, test_size, valid_size, train_size,
 #' @param colnames vector
 #' Vector of column names for numeric features
 #'
+<<<<<<< HEAD
+=======
 #'
 #' @param x_valid data.frame
 #' Dataframe of validation set containing columns to be scaled.
@@ -89,6 +91,7 @@ train_valid_test <- function(X, y, test_size, valid_size, train_size,
 #' @param colnames vector
 #' Vector of column names for numeric features
 #'
+>>>>>>> 3bfb1ffd8df49f091ce5959085039a80fe03ec27
 #' @return list of data.frame
 #' Stores the x_train, x_valid and x_test separately as three dataframes in one list.
 #' The first element in the list will contain x_train, second will be x_valid and the third will contain x_test.
