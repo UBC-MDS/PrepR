@@ -1,10 +1,10 @@
 #' train_valid_test_split
-#' Splits arrays or matrices into random train, validation and test subsets
+#' Splits feature and target data frames into random train, validation and test subsets
 #' The proportion of the train set relative to the input data will be valid_size * (1 - test_size)
 #'
 #' @param
-#' X, y arrays
-#' @param X (data frame)
+#' x, y arrays
+#' @param x (data frame)
 #' Original features from data set
 #' @param y (data frame)
 #' Original labels from data set
@@ -23,18 +23,28 @@
 #' @export
 #'
 #' @examples
-#' x <- iris[, -5]
-#' y <- iris[, 5]
+#' x = data.frame('X1'=c(0,1,2,3,4,5,6,7),
+#'                'X2'=c(8,9,10,11,12,13,14,15))
+#'
+#' y = data.frame('Y'=c(0,1,2,3,4,5,6,7))
 #'
 #' Use default values
-#' split <- gensvm.train.test.split(x, y)
+#' split <- gensvm::gensvm.train.test.split(x, y)
+#'
+#' train_valid_test_split(x,y)$x_train
+#' train_valid_test_split(x,y)$x_valid
+#' train_valid_test_split(x,y)$x_test
+#' train_valid_test_split(x,y)$y_train
+#' train_valid_test_split(x,y)$y_valid
+#' train_valid_test_split(x,y)$y_test
 
-train_valid_test_split <- function(X,
-                                   y = NULL,
+train_valid_test_split <- function(x,
+                                   y,
                                    test_size = 0.25,
                                    valid_size = 0.25,
                                    shuffle = TRUE,
-                                   random_state = NULL) {
+                                   random_state = NULL
+                                   ) {
 
   #' Check data input types
   if (class(x) != 'data.frame') stop('You have not inputted an acceptable data type for x')
@@ -53,25 +63,32 @@ train_valid_test_split <- function(X,
                                               test.size=test_size,
                                               random.state=random_state,
                                               shuffle=shuffle)
-  x_test <- splits_1[2]
-  y_test <- splits_1[4]
 
-  x_resplit <- data.frame(splits_1[1])
-  y_resplit <- data.frame(splits_1[3])
+  x_test <- splits_1$x.test
+  y_test <- splits_1$y.test
+
+  x_resplit <- splits_1$x.train
+  y_resplit <- splits_1$y.train
 
   splits_2 <- gensvm::gensvm.train.test.split(x_resplit,
-                                              y_resplit[,1],
+                                              y_resplit,
                                               test.size=valid_size,
                                               random.state=random_state,
-                                              shuffle=shuffle)
+                                              shuffle=shuffle
+                                              )
 
-  x_train <- splits_2[1]
-  x_valid <- splits_2[2]
+  x_valid <- splits_2$x.test
+  y_valid <- splits_2$y.test
 
-  y_train <- splits_2[3]
-  y_valid <- splits_2[4]
+  x_train <- splits_2$x.train
+  y_train <- splits_2$y.train
 
-
-  return(c(x_train, x_valid, x_test, y_train, y_valid, y_test))
+  return(list('x_train' = data.frame(x_train),
+              'x_valid' = data.frame(x_valid),
+              'x_test' = data.frame(x_test),
+              'y_train' = data.frame(y_train),
+              'y_valid' = data.frame(y_valid),
+              'y_test' = data.frame(y_test)
+              )
+         )
 }
-
