@@ -1,3 +1,5 @@
+library(dplyr)
+library(magrittr)
 # ' data_type
 # ' Identify features of different data types.
 # '
