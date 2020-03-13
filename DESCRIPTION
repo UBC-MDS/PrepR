@@ -33,4 +33,7 @@ Imports:
     nlme,
     magrittr
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

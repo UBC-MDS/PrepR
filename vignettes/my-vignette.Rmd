@@ -1,0 +1,21 @@
+---
+title: "PrepR-vignette"
+output: rmarkdown::html_vignette
+author: Chimaobi Amadi, Matthew Connell, Jasmine Qin, George Thio
+date: March 13, 2020
+vignette: >
+  %\VignetteIndexEntry{PrepR-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(PrepR)
+```
