@@ -25,7 +25,7 @@ data_type <- function(df) {
   }
 
   for (i in colnames(df)) {
-    c <- df %>% pull(i)
+    c <- df[[i]]
 
     if (typeof(c) == "character" | typeof(c) == "logical") {
       cat_vars <- append(cat_vars, i)

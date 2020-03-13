@@ -26,3 +26,11 @@ Description: Preprocessing a dataset for machine learning can be a hassle. This 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    dplyr,
+    gensvm,
+    tibble,
+    nlme,
+    magrittr
+Suggests: 
+    testthat
