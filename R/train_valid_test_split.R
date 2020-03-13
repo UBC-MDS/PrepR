@@ -47,14 +47,11 @@ train_valid_test_split <- function(x,
                                    ) {
 
   #' Check data input types
-  if (class(x) != 'data.frame') stop('You have not inputted an acceptable data type for x')
-  if (class(y) != 'data.frame') stop('You have not inputted an acceptable data type for y')
-
-  #' Check y input dimension
-  if (ncol(y) != 1) stop('Your y input is of the wrong dimension')
+  if (class(x) != 'data.frame') stop('Please provide a non-empty data.frame object for x')
+  if (class(y) != 'data.frame') stop('Please provide a non-empty data.frame object for y')
 
   #' Check for empty data input
-  if (dim(x)[1] == 0) stop ('Your x input is empty')
+  if (dim(x)[1] == 0) stop('Your x input is empty')
   if (dim(y)[1] == 0) stop('Your y input is empty')
 
   # Split into `test` set and `resplit` set to be resplit into `train` and `valid` sets
@@ -92,3 +89,4 @@ train_valid_test_split <- function(x,
               )
          )
 }
+
