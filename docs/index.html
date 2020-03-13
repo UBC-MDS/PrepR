@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -66,7 +66,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/UBC-MDS/PrepR">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -127,14 +134,14 @@
 <p><strong>One-hot encode features of categorical type</strong></p>
 <p><code>one_hot(my_data)</code></p>
 <p><strong>Train, validation, and test split</strong></p>
-<p><code>train_valid_test_split(X, y, test_size, valid_size, train_size, stratify, random_state, shuffle)</code></p>
+<p><code><a href="reference/train_valid_test_split.html">train_valid_test_split(X, y, test_size, valid_size, train_size, stratify, random_state, shuffle)</a></code></p>
 <p><strong>Standard Scaling of categorical features</strong><br><code>X_train = scaler(x_train, x_test, colnames)['x_train']</code></p>
 <p><code>X_test = scaler(x_train, x_test, colnames)['x_test']</code></p>
 </div>
 <div id="our-package-in-the-r-ecosystem" class="section level3">
 <h3 class="hasAnchor">
 <a href="#our-package-in-the-r-ecosystem" class="anchor"></a>Our package in the R ecosystem</h3>
-<p>There are no packages that do everything that this one does, but there are packages for machine learning in R that this package will make use of. The <code>caret</code> package in R does some of these preprocessing steps, such as train/test split. It does not, however, have a function that takes a dataframe and returns multiple dataframes based on their column type; this is the issue that this package’s <code>data_type</code> function seeks to solve. However, it does not seem that there is an option for having a validation set in <code>caret</code>’s version of train/test split. This is an option that would be useful to anyone doing machine learning. The <code>caret</code> package also does one-hot encoding with the function <code>dummyVars</code>, though <code>onehot()</code> in the PrepR package is more intuitive: its function does not return meaningful, human-readable column names. It also removes one column by default, which is better for fast computation, but worse for human-readability.</p>
+<p>There are no packages that do everything that this one does, but there are packages for machine learning in R that this package will make use of. The <code>caret</code> package in R does some of these preprocessing steps, such as train/test split. It does not, however, have a function that takes a dataframe and returns multiple dataframes based on their column type; this is the issue that this package’s <code>data_type</code> function seeks to solve. However, it does not seem that there is an option for having a validation set in <code>caret</code>’s version of train/test split. This is an option that would be useful to anyone doing machine learning. The <code>caret</code> package also does one-hot encoding with the function <code>dummyVars</code>, though <code><a href="reference/onehot.html">onehot()</a></code> in the PrepR package is more intuitive: its function does not return meaningful, human-readable column names. It also removes one column by default, which is better for fast computation, but worse for human-readability.</p>
 <p>Overall, this package fits in well with the R ecosystem and helps make machine learning a little easier.</p>
 </div>
 <div id="documentation" class="section level3">
@@ -151,7 +158,16 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Browse source code at <br><a href="https://github.com/UBC-MDS/PrepR">https://​github.com/​UBC-MDS/​PrepR</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/UBC-MDS/PrepR/issues">https://​github.com/​UBC-MDS/​PrepR/​issues</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>

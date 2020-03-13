@@ -8,8 +8,10 @@
 #' @return data.frame
 #' Returns the same dataframe with useful column names and one-hot encoded features
 #'
+#' @export
+#' 
 #' @examples
-#' my_data <- tibble(animals = c('monkey', 'dog', 'cat'))
+#' my_data <- data.frame(animals = c('monkey', 'dog', 'cat'))
 #' onehot(my_data)
 onehot <- function(encodable_df) {
 

@@ -13,22 +13,24 @@
 #' @param colnames vector
 #' Vector of column names for numeric features
 #'
+#' @export
+#' 
 #' @return list of data.frame
 #' Stores the x_train, x_valid and x_test separately as three dataframes in one list.
 #' The first element in the list will contain x_train, second will be x_valid and the third will contain x_test.
 #'
 #' @examples
-#' x_train <- tibble(colors = c('Blue', 'Red', 'Green'), counts = c(34, 35, 56), usage = c(4, 6, 9))
+#' x_train <- data.frame(colors = c('Blue', 'Red', 'Green'), counts = c(34, 35, 56), usage = c(4, 6, 9))
 #'
-#' x_validation <- tibble(colors = c('Blue', 'Red', 'Green'), counts = c(29, 65, 13), usage = c(5, 27, 10))
+#' x_validation <- data.frame(colors = c('Blue', 'Red', 'Green'), counts = c(29, 65, 13), usage = c(5, 27, 10))
 #'
-#' x_test <- tibble(colors = c('Blue', 'Red', 'Green'), counts = c(20, 35, 18), usage = c(9, 6, 0))
+#' x_test <- data.frame(colors = c('Blue', 'Red', 'Green'), counts = c(20, 35, 18), usage = c(9, 6, 0))
 #'
 #' colnames <- c('counts', 'usage')
 #'
-#' X_train = scaler(x_train, x_valid, x_test, colnames)$X_train
-#' X_test = scaler(x_train, x_valid, x_test, colnames)$X_test
-#' X_validation = scaler(x_train, x_valid, x_test, colnames)$X_validation
+#' X_train = scaler(x_train, x_validation, x_test, colnames)$X_train
+#' X_test = scaler(x_train, x_validation, x_test, colnames)$X_test
+#' X_validation = scaler(x_train, x_validation, x_test, colnames)$X_validation
 
 
 scaler <- function(X_train, X_validation, X_test, colnames) {
