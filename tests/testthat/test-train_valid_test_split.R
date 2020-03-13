@@ -26,10 +26,9 @@ test_that('Test length of output data sets are correct based on default values',
   expect_true(dim(output$x_valid)[1] == 2)
   expect_true(dim(output$x_test)[1] == 2)
   expect_true(dim(output$y_train)[1] == 4)
-  expect_true(dim(ouput$y_valid)[1] == 2)
-  expect_true(dim(ouput$y_test)[1] == 2)
+  expect_true(dim(output$y_valid)[1] == 2)
+  expect_true(dim(output$y_test)[1] == 2)
   }
 )
-
 
 
