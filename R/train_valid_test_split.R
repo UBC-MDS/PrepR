@@ -28,8 +28,6 @@
 #'
 #' y = data.frame('Y'=c(0,1,2,3,4,5,6,7))
 #'
-#' Use default values
-#' split <- gensvm::gensvm.train.test.split(x, y)
 #'
 #' train_valid_test_split(x,y)$x_train
 #' train_valid_test_split(x,y)$x_valid
@@ -46,14 +44,14 @@ train_valid_test_split <- function(x,
                                    random_state = NULL
                                    ) {
 
-  #' Check data input types
+  # Check data input types
   if (class(x) != 'data.frame') stop('You have not inputted an acceptable data type for x')
   if (class(y) != 'data.frame') stop('You have not inputted an acceptable data type for y')
 
-  #' Check y input dimension
+  # Check y input dimension
   if (ncol(y) != 1) stop('Your y input is of the wrong dimension')
 
-  #' Check for empty data input
+  # Check for empty data input
   if (dim(x)[1] == 0) stop ('Your x input is empty')
   if (dim(y)[1] == 0) stop('Your y input is empty')
 

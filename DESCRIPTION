@@ -37,3 +37,6 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/UBC-MDS/PrepR
+BugReports: https://github.com/UBC-MDS/PrepR/issues
+RoxygenNote: 7.0.2

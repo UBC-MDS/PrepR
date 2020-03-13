@@ -16,6 +16,56 @@ knitr::opts_chunk$set(
 )
 ```
 
+`PrepR` is a package for R to help preprocessing in machine learning tasks. There are four main functions included in this package that fit into four important steps in general data preprocessing pipeline.
+
 ```{r setup}
 library(PrepR)
 ```
+
+## Load Data
+To explore functions in `PrepR`, let's first load some toy data. Here we have one categorical data and two numerical data
+
+```{r load_data}
+fruits_df <- data.frame(fruits = c("apple", "pear", "apple", "banana", "orange"), count = c(1L, 2L, 3L, 4L, 5L), price = c(2, 3.4, 0.5, 7, 8))
+fruits_y <- data.frame(target = c(1, 2, 3, 4, 5))
+```
+
+## Train Test Split
+The first thing to do in a machine learning pipeline is to split the data in to train, validation, and test datasets. We will demonstrating this using the function `train_valid_test_split`.
+
+```{r train_valid_test_split}
+x_train <- train_valid_test_split(fruits_df, fruits_y)$x_train
+x_valid <- train_valid_test_split(fruits_df, fruits_y)$x_valid
+x_test <- train_valid_test_split(fruits_df, fruits_y)$x_test
+y_train <- train_valid_test_split(fruits_df, fruits_y)$y_train
+y_valid <- train_valid_test_split(fruits_df, fruits_y)$y_valid
+y_test <- train_valid_test_split(fruits_df, fruits_y)$y_test
+x_train
+```
+
+## Distinguish Data Types
+Next we will need to know variable types of the columns in order to do further transformation or analysis on them. Let's try using our `data_type` function to split categorical and numeric data.
+
+```{r data_type}
+numeric_variables_train <- PrepR::data_type(x_train)$num
+numeric_variables_valid <- PrepR::data_type(x_valid)$num
+numeric_variables_test <- PrepR::data_type(x_test)$num
+categorical_variables <- PrepR::data_type(x_train)$cat
+categorical_variables
+```
+
+## One Hot Encode
+One hot encoding is a powerful transformation that allows us to work with categorical data. Let's take a look at what our `onehot` does.
+
+```{r one-hot}
+onehot(categorical_variables)
+```
+
+## Numeric Scaling
+Now we're left with our numeric variables only. We usually want to normalize our numeric variables for better modelling performance, for example for k-Nearest Neighbours algorithm. The `scaler` function in our package will do this for you.
+
+```{r scaling}
+scaler(numeric_variables_train, numeric_variables_valid, numeric_variables_test, c("count", "price"))$X_train
+```
+
+

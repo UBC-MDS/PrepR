@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -66,7 +66,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/UBC-MDS/PrepR">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -84,18 +91,106 @@
             
             <h4 class="date">March 13, 2020</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/UBC-MDS/PrepR/blob/master/vignettes/my-vignette.Rmd"><code>vignettes/my-vignette.Rmd</code></a></small>
       <div class="hidden name"><code>my-vignette.Rmd</code></div>
 
     </div>
 
     
     
+<p><code>PrepR</code> is a package for R to help preprocessing in machine learning tasks. There are four main functions included in this package that fit into four important steps in general data preprocessing pipeline.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(PrepR)</span></code></pre></div>
+<div id="load-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#load-data" class="anchor"></a>Load Data</h2>
+<p>To explore functions in <code>PrepR</code>, let’s first load some toy data. Here we have one categorical data and two numerical data</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>fruits_df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">fruits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"apple"</span>, <span class="st">"pear"</span>, <span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"orange"</span>), <span class="dt">count =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(1L, 2L, 3L, 4L, 5L), <span class="dt">price =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="fl">3.4</span>, <span class="fl">0.5</span>, <span class="dv">7</span>, <span class="dv">8</span>))</span>
+<span id="cb2-2"><a href="#cb2-2"></a>fruits_y &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">target =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span></code></pre></div>
+</div>
+<div id="train-test-split" class="section level2">
+<h2 class="hasAnchor">
+<a href="#train-test-split" class="anchor"></a>Train Test Split</h2>
+<p>The first thing to do in a machine learning pipeline is to split the data in to train, validation, and test datasets. We will demonstrating this using the function <code>train_valid_test_split</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x_train &lt;-<span class="st"> </span><span class="kw"><a href="../reference/train_valid_test_split.html">train_valid_test_split</a></span>(fruits_df, fruits_y)<span class="op">$</span>x_train</span>
+<span id="cb3-2"><a href="#cb3-2"></a>x_valid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/train_valid_test_split.html">train_valid_test_split</a></span>(fruits_df, fruits_y)<span class="op">$</span>x_valid</span>
+<span id="cb3-3"><a href="#cb3-3"></a>x_test &lt;-<span class="st"> </span><span class="kw"><a href="../reference/train_valid_test_split.html">train_valid_test_split</a></span>(fruits_df, fruits_y)<span class="op">$</span>x_test</span>
+<span id="cb3-4"><a href="#cb3-4"></a>y_train &lt;-<span class="st"> </span><span class="kw"><a href="../reference/train_valid_test_split.html">train_valid_test_split</a></span>(fruits_df, fruits_y)<span class="op">$</span>y_train</span>
+<span id="cb3-5"><a href="#cb3-5"></a>y_valid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/train_valid_test_split.html">train_valid_test_split</a></span>(fruits_df, fruits_y)<span class="op">$</span>y_valid</span>
+<span id="cb3-6"><a href="#cb3-6"></a>y_test &lt;-<span class="st"> </span><span class="kw"><a href="../reference/train_valid_test_split.html">train_valid_test_split</a></span>(fruits_df, fruits_y)<span class="op">$</span>y_test</span>
+<span id="cb3-7"><a href="#cb3-7"></a>x_train</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;   fruits count price</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; 5 orange     5   8.0</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; 2   pear     2   3.4</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; 3  apple     3   0.5</span></span></code></pre></div>
+</div>
+<div id="distinguish-data-types" class="section level2">
+<h2 class="hasAnchor">
+<a href="#distinguish-data-types" class="anchor"></a>Distinguish Data Types</h2>
+<p>Next we will need to know variable types of the columns in order to do further transformation or analysis on them. Let’s try using our <code>data_type</code> function to split categorical and numeric data.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>numeric_variables_train &lt;-<span class="st"> </span>PrepR<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/PrepR/man/data_type.html">data_type</a></span>(x_train)<span class="op">$</span>num</span>
+<span id="cb4-2"><a href="#cb4-2"></a>numeric_variables_valid &lt;-<span class="st"> </span>PrepR<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/PrepR/man/data_type.html">data_type</a></span>(x_valid)<span class="op">$</span>num</span>
+<span id="cb4-3"><a href="#cb4-3"></a>numeric_variables_test &lt;-<span class="st"> </span>PrepR<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/PrepR/man/data_type.html">data_type</a></span>(x_test)<span class="op">$</span>num</span>
+<span id="cb4-4"><a href="#cb4-4"></a>categorical_variables &lt;-<span class="st"> </span>PrepR<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/PrepR/man/data_type.html">data_type</a></span>(x_train)<span class="op">$</span>cat</span>
+<span id="cb4-5"><a href="#cb4-5"></a>categorical_variables</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;   fruits</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; 5 orange</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; 2   pear</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 3  apple</span></span></code></pre></div>
+</div>
+<div id="one-hot-encode" class="section level2">
+<h2 class="hasAnchor">
+<a href="#one-hot-encode" class="anchor"></a>One Hot Encode</h2>
+<p>One hot encoding is a powerful transformation that allows us to work with categorical data. Let’s take a look at what our <code>onehot</code> does.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="../reference/onehot.html">onehot</a></span>(categorical_variables)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;   apple banana orange pear</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; 1     0      0      1    0</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; 2     0      0      0    1</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; 3     1      0      0    0</span></span></code></pre></div>
+</div>
+<div id="numeric-scaling" class="section level2">
+<h2 class="hasAnchor">
+<a href="#numeric-scaling" class="anchor"></a>Numeric Scaling</h2>
+<p>Now we’re left with our numeric variables only. We usually want to normalize our numeric variables for better modelling performance, for example for k-Nearest Neighbours algorithm. The <code>scaler</code> function in our package will do this for you.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="../reference/scaler.html">scaler</a></span>(numeric_variables_train, numeric_variables_valid, numeric_variables_test, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"count"</span>, <span class="st">"price"</span>))<span class="op">$</span>X_train</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; ── Attaching packages ──────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; ✓ ggplot2 3.2.1     ✓ purrr   0.3.3</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; ✓ tibble  2.1.3     ✓ dplyr   0.8.3</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; ✓ tidyr   1.0.0     ✓ stringr 1.4.0</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; ✓ readr   1.3.1     ✓ forcats 0.4.0</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; ── Conflicts ─────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt; x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt; </span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt; Attaching package: 'testthat'</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt; The following object is masked from 'package:dplyr':</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; </span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt;     matches</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; The following object is masked from 'package:purrr':</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; </span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt;     is_null</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">#&gt; The following object is masked from 'package:tidyr':</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt; </span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt;     matches</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt;        count      price</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#&gt; 5  1.0910895  1.0664622</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; 2 -0.8728716 -0.1498335</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt; 3 -0.2182179 -0.9166287</span></span></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#load-data">Load Data</a></li>
+      <li><a href="#train-test-split">Train Test Split</a></li>
+      <li><a href="#distinguish-data-types">Distinguish Data Types</a></li>
+      <li><a href="#one-hot-encode">One Hot Encode</a></li>
+      <li><a href="#numeric-scaling">Numeric Scaling</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
