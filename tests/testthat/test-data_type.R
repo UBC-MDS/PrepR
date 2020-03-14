@@ -1,5 +1,6 @@
 library(testthat)
-library(tidyverse)
+library(dplyr)
+library(magrittr)
 library(PrepR)
 
 test_that("data_type correctly separates categorical and numeric", {

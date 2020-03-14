@@ -26,3 +26,17 @@ Description: Preprocessing a dataset for machine learning can be a hassle. This 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    dplyr,
+    gensvm,
+    tibble,
+    nlme,
+    magrittr
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/UBC-MDS/PrepR
+BugReports: https://github.com/UBC-MDS/PrepR/issues
+RoxygenNote: 7.0.2
