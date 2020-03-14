@@ -44,7 +44,7 @@ scaler <- function(X_train, x_valid, X_test, colnames) {
     stop("Input data must be data.frame object")
   }
   
-  if (length(X_train) == 0 | length(X_test) == 0 | length(x_valid == 0 | length(colnames) == 0) {
+  if (length(X_train) == 0 | length(X_test) == 0 | length(x_valid == 0 | length(colnames) == 0)) {
     stop("Input data cannot be empty")
   }
 
