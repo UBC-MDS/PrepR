@@ -45,7 +45,7 @@ scaler <- function(x_train, x_valid, x_test, colnames) {
 
   if (length(x_train) == 0 | length(x_test) == 0 | length(x_valid) == 0 | length(colnames) == 0) {
     stop("Input data cannot be empty")
-  }
+    }
 
   x_train_scaled <- data.frame(x_train)
   x_train_scaled[colnames] <- scale(x_train[colnames])

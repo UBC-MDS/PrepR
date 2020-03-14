@@ -6,17 +6,12 @@
 Splits feature and target data frames into random train, validation and test subsets
 The proportion of the train set relative to the input data will be valid_size * (1 - test_size)}
 \usage{
-train_valid_test_split(
-  x,
-  y,
-  test_size = 0.25,
-  valid_size = 0.25,
-  shuffle = TRUE,
-  random_state = NULL
-)
+train_valid_test_split(x, y, test_size = 0.25, valid_size = 0.25,
+  shuffle = TRUE, random_state = NULL)
 }
 \arguments{
-\item{x, }{y arrays}
+\item{x}{(data frame)
+Original features from data set}
 
 \item{y}{(data frame)
 Original labels from data set}
@@ -27,14 +22,14 @@ Value between 0.0 and 1.0 to represent the proportion of the dataset to comprise
 \item{valid_size}{float or None (default = 0.25)
 Value between 0.0 and 1.0 to represent the proportion of the dataset to comprise the size of the test subset}
 
+\item{shuffle}{(default = TRUE)
+Shuffle the rows or not}
+
 \item{random_state}{(int, default = NULL)
 Seed for the random number generator}
-
-\item{x}{(data frame)
-Original features from data set}
 }
 \value{
-
+list
 }
 \description{
 train_valid_test_split
