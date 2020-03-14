@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/UBC-MDS/PrepR/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/PrepR/actions)
 [![codecov](https://codecov.io/gh/UBC-MDS/PrepR/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/PrepR)
-[![Documentation
-Status](https://readthedocs.org/projects/PrepR/badge/?version=latest)](https://PrepR.readthedocs.io/en/latest/?badge=latest)
 <!-- badges: end -->
 
 ### Package Summary
