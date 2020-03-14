@@ -17,7 +17,7 @@
 #'
 #' @import gensvm
 #'
-#' @return
+#' @return list
 #' @export
 #'
 #' @examples
