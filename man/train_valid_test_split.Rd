@@ -6,14 +6,8 @@
 Splits feature and target data frames into random train, validation and test subsets
 The proportion of the train set relative to the input data will be valid_size * (1 - test_size)}
 \usage{
-train_valid_test_split(
-  x,
-  y,
-  test_size = 0.25,
-  valid_size = 0.25,
-  shuffle = TRUE,
-  random_state = NULL
-)
+train_valid_test_split(x, y, test_size = 0.25, valid_size = 0.25,
+  shuffle = TRUE, random_state = NULL)
 }
 \arguments{
 \item{x, }{y arrays}
@@ -32,9 +26,6 @@ Seed for the random number generator}
 
 \item{x}{(data frame)
 Original features from data set}
-}
-\value{
-
 }
 \description{
 train_valid_test_split
