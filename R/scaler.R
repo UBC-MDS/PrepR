@@ -34,7 +34,6 @@
 
 
 scaler <- function(X_train, X_validation, X_test, colnames) {
-  library(tidyverse)
   library(testthat)
 
   if (!inherits(X_train, "data.frame") | !inherits(X_test, "data.frame") | !inherits(X_validation, "data.frame")) {
