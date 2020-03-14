@@ -33,6 +33,7 @@ Imports:
     nlme,
     magrittr
 Suggests: 
+    covr,
     testthat,
     knitr,
     rmarkdown
