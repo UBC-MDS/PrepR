@@ -18,7 +18,7 @@
 #' 
 #' @return list of data.frame
 #' Stores the x_train, x_valid
- and x_test separately as three dataframes in one list.
+#' and x_test separately as three dataframes in one list.
 #' The first element in the list will contain x_train, second will be x_valid
  and the third will contain x_test.
 #'
