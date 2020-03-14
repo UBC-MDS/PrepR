@@ -4,7 +4,7 @@
 #' @param x_train data.frame
 #' Dataframe of train set containing columns to be scaled.
 #'
-#' @param x_valid
+#' @param x_valid data.frame
  data.frame
 #' Dataframe of validation set containing columns to be scaled.
 #'
