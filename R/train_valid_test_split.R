@@ -2,8 +2,6 @@
 #' Splits feature and target data frames into random train, validation and test subsets
 #' The proportion of the train set relative to the input data will be valid_size * (1 - test_size)
 #'
-#' @param
-#' x, y arrays
 #' @param x (data frame)
 #' Original features from data set
 #' @param y (data frame)
@@ -14,7 +12,7 @@
 #' Value between 0.0 and 1.0 to represent the proportion of the dataset to comprise the size of the test subset
 #' @param random_state (int, default = NULL)
 #' Seed for the random number generator
-#' @shuffle (default = TRUE)
+#' @param shuffle (default = TRUE)
 #' Shuffle the rows or not
 #'
 #' @import gensvm
