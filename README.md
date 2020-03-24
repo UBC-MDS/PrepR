@@ -111,14 +111,14 @@ Examples:
 ``` r
 train_valid_test_split(fruits_df, fruits_y)$x_train
 #>   fruits count price
-#> 1  apple     1   2.0
 #> 4 banana     4   7.0
 #> 3  apple     3   0.5
+#> 1  apple     1   2.0
 ```
 
 **One-hot encode features of categorical type**
 
-`one_hot(my_data)`
+`onehot(my_data)`
 
 Examples:
 
@@ -134,9 +134,9 @@ onehot(data_type(fruits_df)$cat)
 
 **Standard Scaling of categorical features**
 
-`scaler(x_train, x_test, colnames)$X_train`
+`scaler(x_train, x_test, colnames)$x_train`
 
-`scaler(x_train, x_test, colnames)$X_test`
+`scaler(x_train, x_test, colnames)$x_test`
 
 Examples:
 

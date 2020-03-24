@@ -112,9 +112,9 @@ onehot(data_type(fruits_df)$cat)
 
 **Standard Scaling of categorical features**  
 
-`scaler(x_train, x_test, colnames)$X_train`
+`scaler(x_train, x_test, colnames)$x_train`
 
-`scaler(x_train, x_test, colnames)$X_test`  
+`scaler(x_train, x_test, colnames)$x_test`  
 
 Examples: 
 ```{r example_scaling, warning = FALSE}
