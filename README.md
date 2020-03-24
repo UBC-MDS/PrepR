@@ -20,13 +20,16 @@ of each column in a dataframe, splitting the data (whether into
 train/test sets or train/test/validation sets, one-hot encoding, and
 scaling features. This package will help with all of those tasks.
 
+Please find detailed descriptions of the functions in this
+[vignette](https://ubc-mds.github.io/PrepR/articles/my-vignette.html).
+
 ### Installation:
 
 You can install the released version of PrepR from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-#install.packages("PrepR")
+# install.packages("PrepR")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
@@ -57,8 +60,11 @@ This package has the following features:
 
 R version 3.6.1 and R packages:
 
-  - knitr==1.26 \[@knitr\]
-  - tidyverse==1.2.1 \[@tidyverse\]
+  - dplyr
+  - gensvm
+  - tibble
+  - nlme
+  - magrittr
 
 ### Usage
 
@@ -66,23 +72,85 @@ R version 3.6.1 and R packages:
 
 **Identify features of different data types**
 
-`data_type(my_data)['num']`
+`data_type(my_data)$num`
 
-`data_type(my_data)['cat']`
+`data_type(my_data)$cat`
 
-**One-hot encode features of categorical type**
+Examples:
 
-`one_hot(my_data)`
+``` r
+fruits_df <- data.frame(fruits = c("apple", "pear", "apple", "banana", "orange"), count = c(1L, 2L, 3L, 4L, 5L), price = c(2, 3.4, 0.5, 7, 8))
+fruits_y <- data.frame(target = c(1, 2, 3, 4, 5))
+
+fruits_df
+#>   fruits count price
+#> 1  apple     1   2.0
+#> 2   pear     2   3.4
+#> 3  apple     3   0.5
+#> 4 banana     4   7.0
+#> 5 orange     5   8.0
+```
+
+``` r
+data_type(fruits_df)$num
+#>   count price
+#> 1     1   2.0
+#> 2     2   3.4
+#> 3     3   0.5
+#> 4     4   7.0
+#> 5     5   8.0
+```
 
 **Train, validation, and test split**
 
 `train_valid_test_split(X, y, test_size, valid_size, train_size,
 stratify, random_state, shuffle)`
 
-**Standard Scaling of categorical features**  
-`X_train = scaler(x_train, x_test, colnames)['x_train']`
+Examples:
 
-`X_test = scaler(x_train, x_test, colnames)['x_test']`
+``` r
+train_valid_test_split(fruits_df, fruits_y)$x_train
+#>   fruits count price
+#> 1  apple     1   2.0
+#> 4 banana     4   7.0
+#> 3  apple     3   0.5
+```
+
+**One-hot encode features of categorical type**
+
+`one_hot(my_data)`
+
+Examples:
+
+``` r
+onehot(data_type(fruits_df)$cat)
+#>   apple banana orange pear
+#> 1     1      0      0    0
+#> 2     0      0      0    1
+#> 3     1      0      0    0
+#> 4     0      1      0    0
+#> 5     0      0      1    0
+```
+
+**Standard Scaling of categorical features**
+
+`scaler(x_train, x_test, colnames)$X_train`
+
+`scaler(x_train, x_test, colnames)$X_test`
+
+Examples:
+
+``` r
+num_var <- data_type(fruits_df)$num
+
+scaler(num_var, num_var, num_var, c("count", "price"))$x_train
+#>        count      price
+#> 1 -1.2649111 -0.6772277
+#> 2 -0.6324555 -0.2423108
+#> 3  0.0000000 -1.1432100
+#> 4  0.6324555  0.8760468
+#> 5  1.2649111  1.1867017
+```
 
 ### Our package in the R ecosystem
 
