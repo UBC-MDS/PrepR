@@ -44,8 +44,8 @@ train_valid_test_split <- function(x,
 
 
   # Check data input types
-  if (class(x) != 'data.frame') stop('Please provide a non-empty data.frame object for x')
-  if (class(y) != 'data.frame') stop('Please provide a non-empty data.frame object for y')
+  if (class(x) != 'data.frame') stop('The x input must only be a data.frame object')
+  if (class(y) != 'data.frame') stop('The y input must only be a data.frame object')
 
   # Check for empty data input
   if (dim(x)[1] == 0) stop('Your x input is empty')
