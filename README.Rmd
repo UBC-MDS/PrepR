@@ -139,7 +139,7 @@ Overall, this package fits in well with the R ecosystem and helps make machine l
 
 
 ### Documentation
-The official documentation is hosted on Read the Docs: <https://PrepR.readthedocs.io/en/latest/>
+The official documentation is hosted on Read the Docs: <https://ubc-mds.github.io/PrepR/>
 
 ### Credits
 This package was created using the [Whole Game Chapter](https://r-pkgs.org/whole-game.html) from the [R Packages](https://r-pkgs.org/) handbook by Hadley Wickham

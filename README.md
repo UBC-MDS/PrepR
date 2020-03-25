@@ -175,7 +175,7 @@ machine learning a little easier.
 ### Documentation
 
 The official documentation is hosted on Read the Docs:
-<https://PrepR.readthedocs.io/en/latest/>
+<https://ubc-mds.github.io/PrepR/>
 
 ### Credits
 
