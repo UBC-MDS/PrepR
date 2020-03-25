@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+library(PrepR)
 ```
 
 ## PrepR 
@@ -26,12 +28,14 @@ There are certain repetitive tasks  that come up often when doing a machine lear
 Some of the issues that come up regularly are: finding the types of each column in a dataframe, splitting the data (whether into train/test sets or train/test/validation sets, one-hot encoding,  and scaling features.
 This package will help with all of those tasks.
 
+Please find detailed descriptions of the functions in this [vignette](https://ubc-mds.github.io/PrepR/articles/my-vignette.html).
+
 ### Installation:
 
 You can install the released version of PrepR from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-#install.packages("PrepR")
+# install.packages("PrepR")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
@@ -56,8 +60,11 @@ This package has the following features:
 
 R version 3.6.1 and R packages:
 
-- knitr==1.26 [@knitr]
-- tidyverse==1.2.1 [@tidyverse]
+- dplyr
+- gensvm
+- tibble
+- nlme
+- magrittr
 
 ### Usage
 
@@ -65,25 +72,56 @@ R version 3.6.1 and R packages:
 
 **Identify features of different data types**  
 
-`data_type(my_data)['num']`
+`data_type(my_data)$num`
 
-`data_type(my_data)['cat']`  
+`data_type(my_data)$cat`  
+
+Examples: 
+```{r example}
+fruits_df <- data.frame(fruits = c("apple", "pear", "apple", "banana", "orange"), count = c(1L, 2L, 3L, 4L, 5L), price = c(2, 3.4, 0.5, 7, 8))
+fruits_y <- data.frame(target = c(1, 2, 3, 4, 5))
+
+fruits_df
+```
 
 
-**One-hot encode features of categorical type**  
-
-`one_hot(my_data)`  
+```{r example_datatype}
+data_type(fruits_df)$num
+```
 
 
 **Train, validation, and test split**  
 
 `train_valid_test_split(X, y, test_size, valid_size, train_size, stratify, random_state, shuffle)`
-                        
-  
-**Standard Scaling of categorical features**  
-`X_train = scaler(x_train, x_test, colnames)['x_train']`
 
-`X_test = scaler(x_train, x_test, colnames)['x_test']`  
+Examples: 
+```{r example_split}
+train_valid_test_split(fruits_df, fruits_y)$x_train
+```
+  
+  
+**One-hot encode features of categorical type**  
+
+`onehot(my_data)`  
+
+Examples: 
+```{r example_onehot}
+onehot(data_type(fruits_df)$cat)
+```
+
+
+**Standard Scaling of categorical features**  
+
+`scaler(x_train, x_test, colnames)$x_train`
+
+`scaler(x_train, x_test, colnames)$x_test`  
+
+Examples: 
+```{r example_scaling, warning = FALSE}
+num_var <- data_type(fruits_df)$num
+
+scaler(num_var, num_var, num_var, c("count", "price"))$x_train
+```
 
 ### Our package in the R ecosystem
 
