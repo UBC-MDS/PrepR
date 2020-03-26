@@ -1,5 +1,3 @@
-[![GitHub license](https://img.shields.io/github/license/UBC-MDS/PrepR.js.svg)](https://github.com/UBC-MDS/PrepR.js/blob/master/LICENSE)
-
 # MIT License  
 
 Copyright (c) 2020 Jasmine Qin, George Thio, Chimaobi Amadi, Matthew Connell
